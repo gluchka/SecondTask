@@ -23,15 +23,18 @@ public class DragToStarTest extends BaseTest {
     }
 
     @Test
-    public void letterInSpam() {
+    public void letterInStarred() {
         persAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
         persAccountGoogle.writeLetterClick()
                 .enterRecipient(Constants.LOGIN_SECOND_USER)
-                .enterSubject("Theme")
+                .enterSubject(Constants.THEME_FOR_SECOND_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
+        persAccountGoogle.dragAndDrop()
+                .goToStarredTab()
+                .logoutEnd();
 
-        persAccountGoogle.dragAndDrop();
+
     }
 
 }

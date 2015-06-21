@@ -11,8 +11,7 @@ import org.testng.annotations.Test;
  */
 public class AddFileTest extends BaseTest {
 
-    String login = Constants.LOGIN_FIRST_USER;
-    String password = Constants.PASSWORD_FIRST_USER;
+
     LoginGoogle loginGoogle;
     PersAccountGoogle persAccountGoogle;
     LogoutGoogle logoutGoogle;
@@ -25,8 +24,16 @@ public class AddFileTest extends BaseTest {
     }
 
     @Test
-    public void changeTheme() {
-        persAccountGoogle = loginGoogle.loginToAccount(login, password);
-        persAccountGoogle.writeLetterClick();
+    public void attachFiles() {
+        persAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
+        persAccountGoogle.writeLetterClick()
+                .sendLetterWithAttachedFile(Constants.LOGIN_SECOND_USER, Constants.THEME_FOR_THIRD_SUBTASK, Constants.MESSAGE_CONTENT, Constants.FILE_PATH)
+                .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
+        
+
+
+
     }
+
+
 }

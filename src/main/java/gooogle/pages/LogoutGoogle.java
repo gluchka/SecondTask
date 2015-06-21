@@ -2,6 +2,7 @@ package gooogle.pages;
 
 import components.BasePage;
 import helpers.ClickerHelper;
+import helpers.Constants;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+
+import static helpers.WaiterHelper.delay;
 
 public class LogoutGoogle extends BasePage {
 

@@ -27,13 +27,13 @@ public class SpamLetterTest extends BaseTest {
         persAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
         persAccountGoogle.writeLetterClick()
                 .enterRecipient(Constants.LOGIN_SECOND_USER)
-                .enterSubject("Theme")
+                .enterSubject(Constants.THEME_FOR_FIRST_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
         persAccountGoogle.moveLetterToSpam().loginToAnotherUser(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
         persAccountGoogle.writeLetterClick()
                 .enterRecipient(Constants.LOGIN_SECOND_USER)
-                .enterSubject("Theme")
+                .enterSubject(Constants.THEME_FOR_FIRST_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
         persAccountGoogle.goToSpam();

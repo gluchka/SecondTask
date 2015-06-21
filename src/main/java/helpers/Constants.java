@@ -18,5 +18,10 @@ public class Constants {
     public final static String LOGIN_SECOND_USER = "akhadova.vika@gmail.com";
     public final static String PASSWORD_SECOND_USER = "fkmzyc1596487";
 
+    public final static String THEME_FOR_FIRST_SUBTASK = "Theme1";
+    public final static String THEME_FOR_SECOND_SUBTASK = "Theme2";
+    public final static String THEME_FOR_THIRD_SUBTASK = "Theme3";
 
+    public final static String MESSAGE_CONTENT = "Message content";
+    public final static String FILE_PATH = System.getProperty("user.dir") +"\\src\\main\\resources\\text.txt";
 }
