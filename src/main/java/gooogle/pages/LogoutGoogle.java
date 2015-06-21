@@ -24,7 +24,7 @@ public class LogoutGoogle extends BasePage {
     private final String LOGOUT = "//a[contains(@href, 'logout')]";
 
     private final static String ADD_ACCOUNT = "//a[contains(@href,'https://accounts.google.com/AddSession')]";
-    private final static String ANOTHER_ACCOUNT = "//div[2]/div[2]/a[2]/img";
+    private final static String ANOTHER_ACCOUNT = "//div[2]/div[2]/a[2]/div/div[1]";
 
     @FindBy(xpath = ADD_ACCOUNT)
     private WebElement addAccount;
@@ -50,18 +50,18 @@ public class LogoutGoogle extends BasePage {
 
     public PersAccountGoogle verifySecondAccount(String login, String password) {
         ClickerHelper.clickOnElement(driver, clicToLogoutGoogle);
+        int i =2;
         try {
             ClickerHelper.clickOnElement(driver, anotherAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-            int i =2;
             driver.switchTo().window(tabs.get(i));
             i++;
+            return  new PersAccountGoogle(driver);
         } catch (NoSuchElementException | ElementNotVisibleException e) {
             ClickerHelper.clickOnElement(driver, addAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs.get(1));
             new LoginGoogle(driver).loginToAccount(login, password);
-
         }
         return new PersAccountGoogle(driver);
     }

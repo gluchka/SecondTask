@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Viktoriia_Akhadova on 21-Jun-15.
  */
-public class SpamLetterTest extends BaseTest {
+public class DragToStarredTest extends BaseTest {
 
     LoginGoogle loginGoogle;
     PersAccountGoogle persAccountGoogle;
@@ -30,14 +30,8 @@ public class SpamLetterTest extends BaseTest {
                 .enterSubject("Theme")
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        persAccountGoogle.moveLetterToSpam().loginToAnotherUser(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
-        persAccountGoogle.writeLetterClick()
-                .enterRecipient(Constants.LOGIN_SECOND_USER)
-                .enterSubject("Theme")
-                .sendLetterTo()
-                .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        persAccountGoogle.goToSpam();
 
+        persAccountGoogle.dragAndDrop();
     }
 
 }

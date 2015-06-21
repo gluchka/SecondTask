@@ -5,13 +5,13 @@ import helpers.ClickerHelper;
 import helpers.WaiterHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Stack;
 
 public class PersAccountGoogle extends BasePage {
 
@@ -20,7 +20,6 @@ public class PersAccountGoogle extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    // PersAccountGoogle persAccountGoogle= new PersAccountGoogle(driver);
     LogoutGoogle logoutGoogle = new LogoutGoogle(driver);
 
     private final static String NEW_LETTER_BUTTON = "//div[@class='z0']/div";
@@ -77,11 +76,6 @@ public class PersAccountGoogle extends BasePage {
         return new WriteLetterGoogle(driver);
     }
 
-    public DraftGoogle goToDraftsClick() {
-        ClickerHelper.clickOnElement(driver, gotoDraftButtonGoogle);
-        return new DraftGoogle(driver);
-    }
-
     public PersAccountGoogle settings() {
         ClickerHelper.clickOnElement(driver, settingsButton);
         return this;
@@ -119,8 +113,31 @@ public class PersAccountGoogle extends BasePage {
         ClickerHelper.clickOnElement(driver, moreMenuItem);
         ClickerHelper.clickOnElement(driver, spamButton);
         ClickerHelper.clickOnElement(driver, firstSpamLetter);
-        Assert.assertTrue(firstSpamLetterTheme.getText().equals("Theme2"));
+        Assert.assertTrue(firstSpamLetterTheme.getText().equals("Theme"));
         return this;
     }
+
+    Actions actions = new Actions(driver);
+
+    private final static String TO = "//a[contains(@href, 'starred')]";
+@FindBy(xpath = TO)
+private WebElement to;
+
+
+    public PersAccountGoogle dragAndDrop() {
+
+        WebElement draggable = to;
+        WebElement target = firstLetterCheckBox;
+        new Actions(driver).clickAndHold(draggable).moveToElement(target)
+                .release().perform();
+
+
+
+//        Actions actions = new Actions(driver);
+//        actions.dragAndDrop(firstLetterCheckBox, receivedMailPage.getStarredTab().getWrappedElement()).build().perform();
+//        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.STARRED_CONFIRMATION_XPATH);
+        return this;
+    }
+
 
 }
