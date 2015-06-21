@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Viktoriia_Akhadova on 21-Jun-15.
  */
-public class DragToStarredTest extends BaseTest {
+public class DragToStarTest extends BaseTest {
 
     LoginGoogle loginGoogle;
     PersAccountGoogle persAccountGoogle;

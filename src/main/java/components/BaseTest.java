@@ -15,7 +15,7 @@ public class BaseTest {
 
         @BeforeTest
         public void beforeTest() {
-            driver = DriverManager.firefoxDriver();
+            driver = DriverManager.chromeDriver();
             driver.manage().window().maximize();
             driver.get(Constants.GET_URL);
 

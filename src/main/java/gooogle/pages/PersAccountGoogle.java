@@ -5,6 +5,8 @@ import helpers.ClickerHelper;
 import helpers.WaiterHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -119,18 +121,26 @@ public class PersAccountGoogle extends BasePage {
 
     Actions actions = new Actions(driver);
 
-    private final static String TO = "//a[contains(@href, 'starred')]";
+    private final static String TO = "//div[@role='navigation']/div/div/div/div/div[2]//div/span";//a[contains(@href, 'starred')]";
 @FindBy(xpath = TO)
 private WebElement to;
 
 
     public PersAccountGoogle dragAndDrop() {
 
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setEnableNativeEvents(true);
+//        WebDriver driver = new FirefoxDriver(profile);
+
+
         WebElement draggable = to;
         WebElement target = firstLetterCheckBox;
-        new Actions(driver).clickAndHold(draggable).moveToElement(target)
-                .release().perform();
+        new Actions(driver).clickAndHold(draggable).moveToElement(target).release().perform();
 
+
+//        WebElement draggable1 = to;
+//        WebElement target1 = firstLetterCheckBox;
+//        new Actions(driver).dragAndDrop(draggable1, target1).perform();
 
 
 //        Actions actions = new Actions(driver);
