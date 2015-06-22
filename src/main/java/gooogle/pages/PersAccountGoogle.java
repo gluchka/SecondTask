@@ -40,13 +40,23 @@ public class PersAccountGoogle extends BasePage {
     private final static String FIRST_LETTER_THEME = "//table[@role='presentation']/tr/td//h2";
 
     private final static String NAVIGATE_TO_STARRET = "//div[@role='navigation']/div/div/div/div/div[2]//div/span/a";
-    private final static String FIRST_STARRED_LETTER = "//div[@role='main']/div[4]//tbody//tr/td[6]/div";
+    private final static String FIRST_STARRED_LETTER = "//div[@id]/div/div//div[@role='tabpanel']/div//tbody/tr[1]/td[6]/div";
+
+    private final static String FIRST_SINBOX_LETTER = "//tbody//tr[@id][1]/td[6]/div";
+
+    private final static String ATTACHED_TO_LETTER_FILE = "//div[@style='display:']//div[@id]/span/a[@id]//div[1]/span[@id]";
 
     @FindBy(xpath = NAVIGATE_TO_STARRET)
     private WebElement navigateToStarret;
 
     @FindBy(xpath = FIRST_STARRED_LETTER)
     private WebElement firstStarredLetter;
+
+    @FindBy(xpath = ATTACHED_TO_LETTER_FILE)
+    private WebElement attachedToLetterFile;
+
+    @FindBy(xpath = FIRST_SINBOX_LETTER)
+    private WebElement firstInboxLetter;
 
     @FindBy(xpath = NEW_LETTER_BUTTON)
     private WebElement writeLetterButtonGoogle;
@@ -143,17 +153,18 @@ public class PersAccountGoogle extends BasePage {
         return this;
     }
 
-    public PersAccountGoogle goToStarredTab() {
+    public PersAccountGoogle goToStarredTabVerifyLetter() {
         ClickerHelper.clickOnElement(driver, navigateToStarret);
         ClickerHelper.clickOnElement(driver, firstStarredLetter);
         Assert.assertTrue(firstLetterTheme.getText().equals(Constants.THEME_FOR_SECOND_SUBTASK));
         return this;
     }
 
-    public PersAccountGoogle sendLetterWithAtta(String recipient, String subject, String content, String path) {
-        writeLetterClick().sendLetterWithAttachedFile(recipient, subject, content, path);
+    public PersAccountGoogle goToInboxTabVerifyLetter() {
+        ClickerHelper.clickOnElement(driver, firstInboxLetter);
+        Assert.assertTrue(firstLetterTheme.getText().equals(Constants.THEME_FOR_THIRD_SUBTASK));
+        Assert.assertTrue(attachedToLetterFile.getText().equals(Constants.FILE_NAME));
         return this;
     }
-
 
 }

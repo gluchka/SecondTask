@@ -29,10 +29,8 @@ public class AddFileTest extends BaseTest {
         persAccountGoogle.writeLetterClick()
                 .sendLetterWithAttachedFile(Constants.LOGIN_SECOND_USER, Constants.THEME_FOR_THIRD_SUBTASK, Constants.MESSAGE_CONTENT, Constants.FILE_PATH)
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        
-
-
-
+        persAccountGoogle.goToInboxTabVerifyLetter()
+                .logoutEnd();
     }
 
 

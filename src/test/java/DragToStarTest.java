@@ -31,10 +31,8 @@ public class DragToStarTest extends BaseTest {
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
         persAccountGoogle.dragAndDrop()
-                .goToStarredTab()
+                .goToStarredTabVerifyLetter()
                 .logoutEnd();
-
-
     }
 
 }

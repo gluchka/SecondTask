@@ -36,7 +36,7 @@ public class SpamLetterTest extends BaseTest {
                 .enterSubject(Constants.THEME_FOR_FIRST_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        persAccountGoogle.goToSpam();
+        persAccountGoogle.goToSpam().logoutEnd();
 
     }
 
