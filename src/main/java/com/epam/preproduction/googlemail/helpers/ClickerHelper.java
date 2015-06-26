@@ -1,4 +1,4 @@
-package helpers;
+package com.epam.preproduction.googlemail.helpers;
 
 
 import org.openqa.selenium.StaleElementReferenceException;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
-import static helpers.WaiterHelper.delay;
-import static helpers.WaiterHelper.waitElement;
+import static com.epam.preproduction.googlemail.helpers.WaiterHelper.delay;
+import static com.epam.preproduction.googlemail.helpers.WaiterHelper.waitElement;
 
 /**
  * Created by Viktoriia_Akhadova on 21-Jun-15.

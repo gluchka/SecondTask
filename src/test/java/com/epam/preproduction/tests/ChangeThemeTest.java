@@ -1,8 +1,10 @@
-import components.BaseTest;
-import gooogle.pages.LoginGoogle;
-import gooogle.pages.LogoutGoogle;
-import gooogle.pages.PersAccountGoogle;
-import helpers.Constants;
+package com.epam.preproduction.tests;
+
+
+import com.epam.preproduction.googlemail.pages.LoginGoogle;
+import  com.epam.preproduction.googlemail.pages.LogoutGoogle;
+import  com.epam.preproduction.googlemail.pages.PersonalAccountGoogle;
+import com.epam.preproduction.googlemail.helpers.Constants;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,20 +17,20 @@ public class ChangeThemeTest extends BaseTest {
     String password = Constants.PASSWORD_FIRST_USER;
 
     LoginGoogle loginGoogle;
-    PersAccountGoogle persAccountGoogle;
+    PersonalAccountGoogle personalAccountGoogle;
     LogoutGoogle logoutGoogle;
 
     @BeforeMethod
     public void preparationForTheTest() {
         loginGoogle = new LoginGoogle(driver);
-        persAccountGoogle = new PersAccountGoogle(driver);
+        personalAccountGoogle = new PersonalAccountGoogle(driver);
         logoutGoogle = new LogoutGoogle(driver);
     }
 
     @Test
     public void changeTheme() {
-        persAccountGoogle = loginGoogle.loginToAccount(login, password);
-        persAccountGoogle.selectAndVerifyRandomTheme();
+        personalAccountGoogle = loginGoogle.loginToAccount(login, password);
+        personalAccountGoogle.selectAndVerifyRandomTheme();
         logoutGoogle.clickLogoutFromGoogle().logoutGoogle();
     }
 }

@@ -1,8 +1,7 @@
-package gooogle.pages;
+package com.epam.preproduction.googlemail.pages;
 
-import components.BasePage;
-import helpers.ClickerHelper;
-import helpers.Constants;
+import com.epam.preproduction.googlemail.helpers.ClickerHelper;
+import com.epam.preproduction.googlemail.helpers.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +11,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-import static helpers.WaiterHelper.delay;
+import static com.epam.preproduction.googlemail.helpers.WaiterHelper.delay;
 
 public class WriteLetterGoogle extends BasePage {
 
@@ -67,13 +66,13 @@ public class WriteLetterGoogle extends BasePage {
     }
 
 
-    public PersAccountGoogle sendLetterTo() {
+    public PersonalAccountGoogle sendLetterTo() {
         ClickerHelper.clickOnElement(driver, sendLetter);
-        return new PersAccountGoogle(driver);
+        return new PersonalAccountGoogle(driver);
     }
 
 
-    public PersAccountGoogle sendLetterWithAttachedFile(String email, String subject, String text, String filePath)  {
+    public PersonalAccountGoogle sendLetterWithAttachedFile(String email, String subject, String text, String filePath)  {
         enterRecipient(email);
         enterSubject(subject);
         enterСontent(text);
@@ -82,7 +81,7 @@ public class WriteLetterGoogle extends BasePage {
         uploadFile(filePath);
         delay(Constants.SMALL_DELAY );
         sendLetterTo();
-        return new PersAccountGoogle(driver);
+        return new PersonalAccountGoogle(driver);
     }
 
     private void uploadFile(String filePath) {

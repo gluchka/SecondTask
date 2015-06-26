@@ -1,9 +1,10 @@
-package gooogle.pages;
+package com.epam.preproduction.googlemail.pages;
 
-import components.BasePage;
-import helpers.ClickerHelper;
-import helpers.Constants;
-import helpers.WaiterHelper;
+
+
+import com.epam.preproduction.googlemail.helpers.ClickerHelper;
+import com.epam.preproduction.googlemail.helpers.Constants;
+import com.epam.preproduction.googlemail.helpers.WaiterHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,11 +15,11 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.Random;
 
-import static helpers.WaiterHelper.delay;
+import static com.epam.preproduction.googlemail.helpers.WaiterHelper.delay;
 
-public class PersAccountGoogle extends BasePage {
+public class PersonalAccountGoogle extends BasePage {
 
-    public PersAccountGoogle(WebDriver driver) {
+    public PersonalAccountGoogle(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -47,74 +48,74 @@ public class PersAccountGoogle extends BasePage {
     private final static String ATTACHED_TO_LETTER_FILE = "//div[@style='display:']//div[@id]/span/a[@id]//div[1]/span[@id]";
 
     @FindBy(xpath = NAVIGATE_TO_STARRET)
-    private WebElement navigateToStarret;
+    protected WebElement navigateToStarret;
 
     @FindBy(xpath = FIRST_STARRED_LETTER)
-    private WebElement firstStarredLetter;
+    protected WebElement firstStarredLetter;
 
     @FindBy(xpath = ATTACHED_TO_LETTER_FILE)
-    private WebElement attachedToLetterFile;
+    protected WebElement attachedToLetterFile;
 
     @FindBy(xpath = FIRST_SINBOX_LETTER)
-    private WebElement firstInboxLetter;
+    protected WebElement firstInboxLetter;
 
     @FindBy(xpath = NEW_LETTER_BUTTON)
-    private WebElement writeLetterButtonGoogle;
+    protected WebElement writeLetterButtonGoogle;
 
     @FindBy(xpath = GOTO_DRAFTS)
-    private WebElement gotoDraftButtonGoogle;
+    protected WebElement gotoDraftButtonGoogle;
 
     @FindBy(xpath = SETTINGS)
-    private WebElement settingsButton;
+    protected WebElement settingsButton;
 
     @FindBy(xpath = SETTINGS_THEME)
-    private WebElement settingsTheme;
+    protected WebElement settingsTheme;
 
     @FindBy(xpath = ALL_THEMES)
-    private List<WebElement> allThemes;
+    protected List<WebElement> allThemes;
 
     @FindBy(xpath = FIRST_LETTER_CHECKBOX)
-    private WebElement firstLetterCheckBox;
+    protected WebElement firstLetterCheckBox;
 
     @FindBy(xpath = SPAM_TOP_BUTTON)
-    private WebElement spamTopButton;
+    protected WebElement spamTopButton;
 
     @FindBy(xpath = ALERT_CHANGE_THEME)
-    private WebElement allertMessege;
+    protected WebElement alertMessage;
 
     @FindBy(xpath = MORE_MENU_ITEMS)
-    private WebElement moreMenuItem;
+    protected WebElement moreMenuItem;
 
     @FindBy(xpath = SPAM_BUTTON)
-    private WebElement spamButton;
+    protected WebElement spamButton;
 
     @FindBy(xpath = FIRST_SPAM_LETTER)
-    private WebElement firstSpamLetter;
+    protected WebElement firstSpamLetter;
 
     @FindBy(xpath = FIRST_LETTER_THEME)
-    private WebElement firstLetterTheme;
+    protected WebElement firstLetterTheme;
 
     public WriteLetterGoogle writeLetterClick() {
         ClickerHelper.clickOnElement(driver, writeLetterButtonGoogle);
         return new WriteLetterGoogle(driver);
     }
 
-    public PersAccountGoogle settings() {
+    public PersonalAccountGoogle settings() {
         ClickerHelper.clickOnElement(driver, settingsButton);
         return this;
     }
 
-    public PersAccountGoogle settingsTheme() {
+    public PersonalAccountGoogle settingsTheme() {
         ClickerHelper.clickOnElement(driver, settingsTheme);
         return this;
     }
 
-    public PersAccountGoogle selectRandomTheme() {
+    public PersonalAccountGoogle selectRandomTheme() {
         ClickerHelper.clickOnElement(driver, allThemes.get(new Random().nextInt(allThemes.size())));
         return this;
     }
 
-    public PersAccountGoogle selectAndVerifyRandomTheme() {
+    public PersonalAccountGoogle selectAndVerifyRandomTheme() {
         settings().settingsTheme().selectRandomTheme();
         Assert.assertTrue(WaiterHelper.isElementVisible(driver, ALERT_CHANGE_THEME));
         return this;
@@ -130,14 +131,14 @@ public class PersAccountGoogle extends BasePage {
         return new LoginGoogle(driver);
     }
 
-    public PersAccountGoogle moveLetterToSpam() {
+    public PersonalAccountGoogle moveLetterToSpam() {
         ClickerHelper.clickOnElement(driver, firstLetterCheckBox);
         ClickerHelper.clickOnElement(driver, spamTopButton);
-        Assert.assertTrue(allertMessege.getText().equals("Цепочка отмечена как спам."));
+        Assert.assertTrue(alertMessage.getText().equals("Цепочка отмечена как спам."));
         return this;
     }
 
-    public PersAccountGoogle goToSpam() {
+    public PersonalAccountGoogle goToSpam() {
         ClickerHelper.clickOnElement(driver, moreMenuItem);
         ClickerHelper.clickOnElement(driver, spamButton);
         ClickerHelper.clickOnElement(driver, firstSpamLetter);
@@ -145,7 +146,7 @@ public class PersAccountGoogle extends BasePage {
         return this;
     }
 
-    public PersAccountGoogle dragAndDrop() {
+    public PersonalAccountGoogle dragAndDrop() {
 
         Actions actions = new Actions(driver);
         actions.dragAndDrop(firstLetterCheckBox, navigateToStarret).release().perform();
@@ -153,14 +154,14 @@ public class PersAccountGoogle extends BasePage {
         return this;
     }
 
-    public PersAccountGoogle goToStarredTabVerifyLetter() {
+    public PersonalAccountGoogle goToStarredTabVerifyLetter() {
         ClickerHelper.clickOnElement(driver, navigateToStarret);
         ClickerHelper.clickOnElement(driver, firstStarredLetter);
         Assert.assertTrue(firstLetterTheme.getText().equals(Constants.THEME_FOR_SECOND_SUBTASK));
         return this;
     }
 
-    public PersAccountGoogle goToInboxTabVerifyLetter() {
+    public PersonalAccountGoogle goToInboxTabVerifyLetter() {
         ClickerHelper.clickOnElement(driver, firstInboxLetter);
         Assert.assertTrue(firstLetterTheme.getText().equals(Constants.THEME_FOR_THIRD_SUBTASK));
         Assert.assertTrue(attachedToLetterFile.getText().equals(Constants.FILE_NAME));

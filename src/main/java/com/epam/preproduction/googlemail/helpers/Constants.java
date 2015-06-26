@@ -1,4 +1,4 @@
-package helpers;
+package com.epam.preproduction.googlemail.helpers;
 
 /**
  * Created by Viktoriia_Akhadova on 21-Jun-15.

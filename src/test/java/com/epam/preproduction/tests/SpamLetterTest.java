@@ -1,8 +1,10 @@
-import components.BaseTest;
-import gooogle.pages.LoginGoogle;
-import gooogle.pages.LogoutGoogle;
-import gooogle.pages.PersAccountGoogle;
-import helpers.Constants;
+package com.epam.preproduction.tests;
+
+
+import com.epam.preproduction.googlemail.pages.LoginGoogle;
+import com.epam.preproduction.googlemail.pages.LogoutGoogle;
+import com.epam.preproduction.googlemail.pages.PersonalAccountGoogle;
+import com.epam.preproduction.googlemail.helpers.Constants;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,31 +14,31 @@ import org.testng.annotations.Test;
 public class SpamLetterTest extends BaseTest {
 
     LoginGoogle loginGoogle;
-    PersAccountGoogle persAccountGoogle;
+    PersonalAccountGoogle personalAccountGoogle;
     LogoutGoogle logoutGoogle;
 
     @BeforeMethod
     public void preparationForTheTest() {
         loginGoogle = new LoginGoogle(driver);
-        persAccountGoogle = new PersAccountGoogle(driver);
+        personalAccountGoogle = new PersonalAccountGoogle(driver);
         logoutGoogle = new LogoutGoogle(driver);
     }
 
     @Test
     public void letterInSpam() {
-        persAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
-        persAccountGoogle.writeLetterClick()
+        personalAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
+        personalAccountGoogle.writeLetterClick()
                 .enterRecipient(Constants.LOGIN_SECOND_USER)
                 .enterSubject(Constants.THEME_FOR_FIRST_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        persAccountGoogle.moveLetterToSpam().loginToAnotherUser(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
-        persAccountGoogle.writeLetterClick()
+        personalAccountGoogle.moveLetterToSpam().loginToAnotherUser(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
+        personalAccountGoogle.writeLetterClick()
                 .enterRecipient(Constants.LOGIN_SECOND_USER)
                 .enterSubject(Constants.THEME_FOR_FIRST_SUBTASK)
                 .sendLetterTo()
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
-        persAccountGoogle.goToSpam().logoutEnd();
+        personalAccountGoogle.goToSpam().logoutEnd();
 
     }
 

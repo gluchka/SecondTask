@@ -1,8 +1,6 @@
-package gooogle.pages;
+package com.epam.preproduction.googlemail.pages;
 
-import components.BasePage;
-import components.DriverManager;
-import helpers.ClickerHelper;
+import com.epam.preproduction.googlemail.helpers.ClickerHelper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,25 +13,22 @@ public class LoginGoogle extends BasePage {
     private final String PASSWORD_GOOGLE = "//input[@id='Passwd']";
     private final String PASS_BUTTON_GOOGLE = "//input[@id='signIn']";
 
-
-    private ClickerHelper clickerHelper;
-
     public LoginGoogle(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = LOGIN_GOOGLE)
-    private WebElement loginGoogleTextField;
+    protected WebElement loginGoogleTextField;
 
     @FindBy(xpath = LOGIN_GOOGLE_BUTTON)
-    private WebElement loginButtonGoogle;
+    protected WebElement loginButtonGoogle;
 
     @FindBy(xpath = PASSWORD_GOOGLE)
-    private WebElement passGoogleTextField;
+    protected WebElement passGoogleTextField;
 
     @FindBy(xpath = PASS_BUTTON_GOOGLE)
-    private WebElement passButtonGoogle;
+    protected WebElement passButtonGoogle;
 
     public LoginGoogle enterLogin(String login) {
         loginGoogleTextField.sendKeys(login);
@@ -50,18 +45,18 @@ public class LoginGoogle extends BasePage {
         return this;
     }
 
-    public PersAccountGoogle clickSignInButton() {
+    public PersonalAccountGoogle clickSignInButton() {
         ClickerHelper.clickOnElement(driver, passButtonGoogle);
-        return new PersAccountGoogle(driver);
+        return new PersonalAccountGoogle(driver);
     }
 
 
-    public PersAccountGoogle loginToAccount(String login, String password) {
+    public PersonalAccountGoogle loginToAccount(String login, String password) {
         enterLogin(login)
                 .clickLoginButton()
                 .enterPassword(password)
                 .clickSignInButton();
-        return new PersAccountGoogle(driver);
+        return new PersonalAccountGoogle(driver);
     }
 
 }

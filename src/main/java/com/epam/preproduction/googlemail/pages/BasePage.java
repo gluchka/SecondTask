@@ -1,4 +1,4 @@
-package components;
+package com.epam.preproduction.googlemail.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -19,7 +19,7 @@ protected WebDriver driver;
 	public WebElement findElementByXpath(String xpath){
 		return driver.findElement(By.xpath(xpath));
 	}
-	
+
 	public WebElement findElementByCss(String css){
 		return driver.findElement(By.cssSelector(css));
 	}
@@ -27,7 +27,7 @@ protected WebDriver driver;
 	public WebElement findElementById(String id){
 		return driver.findElement(By.id(id));
 	}
-	
+
 	public WebElement findElementByLink(String link){
 		return driver.findElement(By.linkText(link));
 	}

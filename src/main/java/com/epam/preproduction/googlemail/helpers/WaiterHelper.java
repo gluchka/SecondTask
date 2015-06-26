@@ -1,6 +1,4 @@
-package helpers;
-
-
+package com.epam.preproduction.googlemail.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;

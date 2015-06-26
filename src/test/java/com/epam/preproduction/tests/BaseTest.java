@@ -1,6 +1,8 @@
-package components;
+package com.epam.preproduction.tests;
 
-import helpers.Constants;
+
+import com.epam.preproduction.googlemail.core.DriverManager;
+import com.epam.preproduction.googlemail.helpers.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

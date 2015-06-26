@@ -1,8 +1,6 @@
-package gooogle.pages;
+package com.epam.preproduction.googlemail.pages;
 
-import components.BasePage;
-import helpers.ClickerHelper;
-import helpers.Constants;
+import com.epam.preproduction.googlemail.helpers.ClickerHelper;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
-
-import static helpers.WaiterHelper.delay;
 
 public class LogoutGoogle extends BasePage {
 
@@ -30,20 +26,20 @@ public class LogoutGoogle extends BasePage {
     private final static String ANOTHER_ACCOUNT = "//div[2]/div[2]/a[2]/div/div[1]";
 
     @FindBy(xpath = ADD_ACCOUNT)
-    private WebElement addAccount;
+    protected WebElement addAccount;
 
     @FindBy(xpath = ANOTHER_ACCOUNT)
-    private WebElement anotherAccount;
+    protected WebElement anotherAccount;
 
 
     @FindBy(xpath = CLICK_TO_LOGOUT)
-    private WebElement clicToLogoutGoogle;
+    protected WebElement clickToLogoutGoogle;
 
     @FindBy(xpath = LOGOUT)
-    private WebElement logoutGoogle;
+    protected WebElement logoutGoogle;
 
     public LogoutGoogle clickLogoutFromGoogle() {
-        ClickerHelper.clickOnElement(driver, clicToLogoutGoogle);
+        ClickerHelper.clickOnElement(driver, clickToLogoutGoogle);
         return this;
     }
 
@@ -51,22 +47,22 @@ public class LogoutGoogle extends BasePage {
         ClickerHelper.clickOnElement(driver, logoutGoogle);
     }
 
-    public PersAccountGoogle verifySecondAccount(String login, String password) {
-        ClickerHelper.clickOnElement(driver, clicToLogoutGoogle);
+    public PersonalAccountGoogle verifySecondAccount(String login, String password) {
+        ClickerHelper.clickOnElement(driver, clickToLogoutGoogle);
         int i =2;
         try {
             ClickerHelper.clickOnElement(driver, anotherAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs.get(i));
             i++;
-            return  new PersAccountGoogle(driver);
+            return  new PersonalAccountGoogle(driver);
         } catch (NoSuchElementException | ElementNotVisibleException e) {
             ClickerHelper.clickOnElement(driver, addAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs.get(1));
             new LoginGoogle(driver).loginToAccount(login, password);
         }
-        return new PersAccountGoogle(driver);
+        return new PersonalAccountGoogle(driver);
     }
 
 }
