@@ -2,14 +2,4 @@
 *.idea
 /.idea/.name
 *.iml
-/.idea/vcs.xml
-/.idea/workspace.xml
-/.idea/copyright
-/.idea/libraries
-/.idea/.name
-/.idea/compiler.xml
-/.idea/encodings.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/uiDesigner.xml
 /target
