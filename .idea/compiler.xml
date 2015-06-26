@@ -34,7 +34,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="akhadova" target="1.8" />
-      <module name="TaskTwo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

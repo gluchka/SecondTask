@@ -1,21 +1,21 @@
-2. ћаркированый точками1
-Х	answ1
-Х	answ2
-Х	answ3
-Х	answ3
-2. ћаркированый точками2
-Х	answ1
-Х	answ2
-Х	answ3
-Х	answ3
-2. ћаркированый точками3
-Х	answ1
-Х	answ2
-Х	answ3
-Х	answ3
-2. ћаркированый точками4
-Х	answ1
-Х	answ2
-Х	answ3
-Х	answ3
+1. Question1
+a	answer 1.1
+b	answer 1.2
+c	answer 1.3
+d	answer 1.4
+2. Question2
+a	answer 2.1
+b	answer 2.2
+c	answer 2.3
+d	answer 2.4
+3. Question3
+a	answer 3.1
+b	answer 3.2
+c	answer 3.3
+d	answer 3.4
+4. Question4
+a	answer 4.1
+b	answer 4.2
+c	answer 4.3
+d	answer 4.4
 
