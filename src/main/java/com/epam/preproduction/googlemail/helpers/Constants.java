@@ -10,8 +10,6 @@ public class Constants {
     public final static int SMALL_DELAY = 5000;
     public final static int MIDDLE_DELAY = 15000;
 
-    public final static String GET_URL = "https://accounts.google.com/ServiceLogin?service=mail";
-
     public final static String LOGIN_FIRST_USER = "userYRtest@gmail.com";
     public final static String PASSWORD_FIRST_USER = "useruser123";
 

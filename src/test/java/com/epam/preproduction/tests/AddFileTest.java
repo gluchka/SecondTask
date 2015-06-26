@@ -13,11 +13,6 @@ import org.testng.annotations.Test;
  */
 public class AddFileTest extends BaseTest {
 
-
-    LoginGoogle loginGoogle;
-    PersonalAccountGoogle personalAccountGoogle;
-    LogoutGoogle logoutGoogle;
-
     @BeforeMethod
     public void preparationForTheTest() {
         loginGoogle = new LoginGoogle(driver);
@@ -27,10 +22,14 @@ public class AddFileTest extends BaseTest {
 
     @Test
     public void attachFiles() {
+        LOGGER.info("Test with attaching file is began");
+        LOGGER.info("Login to account");
         personalAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
+        LOGGER.info("Write and send second letter with attached file, login as user2");
         personalAccountGoogle.writeLetterClick()
                 .sendLetterWithAttachedFile(Constants.LOGIN_SECOND_USER, Constants.THEME_FOR_THIRD_SUBTASK, Constants.MESSAGE_CONTENT, Constants.FILE_PATH)
                 .loginToAnotherUser(Constants.LOGIN_SECOND_USER, Constants.PASSWORD_SECOND_USER);
+        LOGGER.info("Verify that letter came with attached file");
         personalAccountGoogle.goToInboxTabVerifyLetter()
                 .logoutEnd();
     }

@@ -49,17 +49,22 @@ public class LogoutGoogle extends BasePage {
 
     public PersonalAccountGoogle verifySecondAccount(String login, String password) {
         ClickerHelper.clickOnElement(driver, clickToLogoutGoogle);
+
         int i =2;
         try {
             ClickerHelper.clickOnElement(driver, anotherAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs.get(i));
             i++;
+
             return  new PersonalAccountGoogle(driver);
+
         } catch (NoSuchElementException | ElementNotVisibleException e) {
+
             ClickerHelper.clickOnElement(driver, addAccount);
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tabs.get(1));
+
             new LoginGoogle(driver).loginToAccount(login, password);
         }
         return new PersonalAccountGoogle(driver);

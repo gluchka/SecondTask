@@ -11,20 +11,21 @@ import org.openqa.selenium.opera.OperaDriver;
  */
 public class DriverManager {
 
+    protected static PropertyFactory property = new PropertyFactory();
 
         public static WebDriver chromeDriver()
         {
-            System.setProperty("webdriver.chrome.driver", "DriversExeLib/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", property.getProperty("chrome.driver"));
             return new ChromeDriver();
         }
         public static WebDriver operaDriver()
         {
-            System.setProperty("webdriver.opera.driver", "DriversExeLib/operadriver64.exe");
+            System.setProperty("webdriver.opera.driver", property.getProperty("opera.driver"));
             return new OperaDriver();
         }
         public static WebDriver ieDriver()
         {
-            System.setProperty("webdriver.ie.driver", "DriversExeLib/IEDriverServer64.exe");
+            System.setProperty("webdriver.ie.driver", property.getProperty("ie.driver"));
             return new InternetExplorerDriver();
         }
         public static WebDriver firefoxDriver()

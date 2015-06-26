@@ -15,11 +15,6 @@ import org.apache.log4j.Logger;
  */
 public class ChangeThemeTest extends BaseTest {
 
-    public static final Logger INFO = Logger.getLogger(BasePage.class);
-
-    protected LoginGoogle loginGoogle;
-    protected PersonalAccountGoogle personalAccountGoogle;
-    protected LogoutGoogle logoutGoogle;
 
     @BeforeMethod
     public void preparationForTheTest() {
@@ -30,10 +25,12 @@ public class ChangeThemeTest extends BaseTest {
 
     @Test
     public void changeTheme() {
-        INFO.info("Change theme test begin");
-        INFO.info("Login to account");
+        LOGGER.info("Change theme test begin");
+        LOGGER.info("Login to account");
         personalAccountGoogle = loginGoogle.loginToAccount(Constants.LOGIN_FIRST_USER, Constants.PASSWORD_FIRST_USER);
+        LOGGER.info("Change theme");
         personalAccountGoogle.selectAndVerifyRandomTheme();
+        LOGGER.info("Logout");
         logoutGoogle.clickLogoutFromGoogle().logoutGoogle();
     }
 }
